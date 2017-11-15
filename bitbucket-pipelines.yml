@@ -1,0 +1,50 @@
+image: node:alpine
+
+clone:
+  depth: full
+
+pipelines:
+  custom:
+    full-build:
+      - step:
+          script:
+            - cd build
+            - npm install
+            - npm run full-build
+    partial-build:
+      - step:
+          script:
+            - cd build
+            - npm install
+            - npm run partial-build    
+  branches:
+    master:
+      - step:
+          script:
+            - cd build
+            - npm install
+            - npm run full-build
+    dev: 
+      - step:
+          script:
+            - cd build
+            - npm install
+            - npm run full-build
+    sit:
+      - step:
+          script:
+            - cd build
+            - npm install
+            - npm run full-build
+    feature/*:
+      - step:
+          script:
+            - cd build
+            - npm install
+            - npm run full-build
+    release/*:
+      - step:
+          script:
+            - cd build
+            - npm install
+            - npm run full-build
